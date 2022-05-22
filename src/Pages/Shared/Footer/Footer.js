@@ -2,8 +2,6 @@ import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-sv
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo2 from '../../../Assets/icons/tools-terminal-logo2.png';
-import logo3 from '../../../Assets/icons/payments1.png';
 
 const Footer = () => {
 
@@ -15,7 +13,7 @@ const Footer = () => {
             <footer class="footer bg-accent text-white p-8 lg:px-40 lg:py-16">
                 <div>
                     <Link className='w-24 lg:w-6/12' to='/'>
-                        <img src={logo2} alt="logo" />
+                        <img src="https://i.ibb.co/8XhzrKT/tools-terminal-logo2.png" alt="logo" />
                     </Link>
                     <p className='text-xl'>Tools Terminal Ltd.</p>
                     <div className='grid'>
@@ -63,7 +61,7 @@ const Footer = () => {
 
             <footer class="footer items-center p-8 bg-secondary text-white lg:px-40">
                 <div class="items-center grid-flow-col">
-                    <img src={logo3} alt="" />
+                    <img src="https://i.ibb.co/pr6Bv45/payments.png" alt="" />
                 </div>
                 <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
                     <p>© Copyright {year} Tools Terminal || All Rights Reserved</p>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo1 from '../../../Assets/icons/tools-terminal-logo2.png';
 
 const Header = () => {
 
@@ -36,7 +35,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <Link className='w-24 lg:w-2/12' to='/'>
-                    <img src={logo1} alt="logo" />
+                    <img src="https://i.ibb.co/8XhzrKT/tools-terminal-logo2.png" alt="logo" />
                 </Link>
             </div>
 
