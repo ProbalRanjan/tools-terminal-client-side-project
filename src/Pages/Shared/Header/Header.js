@@ -35,7 +35,7 @@ const Header = () => {
                         {navMenu}
                     </ul>
                 </div>
-                <Link className='w-24' to='/'>
+                <Link className='w-20 lg:w-24' to='/'>
                     <img src={logo1} alt="logo" />
                 </Link>
             </div>
@@ -48,21 +48,21 @@ const Header = () => {
             </div>
 
 
-            <div>
-                <div className="navbar-start">
+            <div className='ml-4'>
+                <div className="pl-16 lg:pl-0">
                     <Link to='/login'>Login</Link>
                 </div>
 
                 {/* Profile Avatar */}
-                <div class="dropdown dropdown-end">
+                <div className="dropdown dropdown-end">
                     <label tabIndex="0" className="btn btn-ghost btn-circle avatar online">
                         <div className="w-10 rounded-full">
-                            <img src="https://api.lorem.space/image/face?hash=33791" />
+                            <img src="https://api.lorem.space/image/face?hash=33791" alt='' />
                         </div>
                     </label>
-                    <ul tabIndex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
-                            <a>Profile</a>
+                            <h5>Profile</h5>
                         </li>
                         <li>
                             <button>Logout</button>
