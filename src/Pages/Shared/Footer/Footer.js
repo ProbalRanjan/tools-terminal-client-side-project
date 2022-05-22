@@ -3,13 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo2 from '../../../Assets/icons/tools-terminal-logo2.png';
+import logo3 from '../../../Assets/icons/payments1.png';
 
 const Footer = () => {
+
+    const today = new Date();
+    const year = today.getFullYear();
+
     return (
         <div>
-            <footer class="footer p-16 bg-accent text-white lg:px-40">
+            <footer class="footer bg-accent text-white p-8 lg:px-40 lg:py-16">
                 <div>
-                    <Link className='w-20 lg:w-32' to='/'>
+                    <Link className='w-24 lg:w-6/12' to='/'>
                         <img src={logo2} alt="logo" />
                     </Link>
                     <p className='text-xl'>Tools Terminal Ltd.</p>
@@ -56,12 +61,12 @@ const Footer = () => {
                 </div>
             </footer>
 
-            <footer class="footer items-center p-4 bg-secondary text-white lg:px-40">
+            <footer class="footer items-center p-8 bg-secondary text-white lg:px-40">
                 <div class="items-center grid-flow-col">
-                    <p>Copyright © 2022 - All right reserved</p>
+                    <img src={logo3} alt="" />
                 </div>
                 <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-                    <img src='' alt="" />
+                    <p>© Copyright {year} Tools Terminal || All Rights Reserved</p>
                 </div>
             </footer>
         </div>

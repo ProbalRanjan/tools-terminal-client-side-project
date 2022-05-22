@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo1 from '../../../Assets/icons/tools-terminal-logo1.png';
+import logo1 from '../../../Assets/icons/tools-terminal-logo2.png';
 
 const Header = () => {
 
@@ -23,7 +23,7 @@ const Header = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 py-5 lg:px-40">
+        <div className="navbar bg-accent py-4 lg:px-40 text-white">
             <div className="navbar-start">
 
                 {/* Mobile Navbar */}
@@ -35,7 +35,7 @@ const Header = () => {
                         {navMenu}
                     </ul>
                 </div>
-                <Link className='w-20 lg:w-24' to='/'>
+                <Link className='w-24 lg:w-2/12' to='/'>
                     <img src={logo1} alt="logo" />
                 </Link>
             </div>
@@ -54,7 +54,7 @@ const Header = () => {
                 </div>
 
                 {/* Profile Avatar */}
-                <div className="dropdown dropdown-end">
+                <div className="dropdown dropdown-end text-black">
                     <label tabIndex="0" className="btn btn-ghost btn-circle avatar online">
                         <div className="w-10 rounded-full">
                             <img src="https://api.lorem.space/image/face?hash=33791" alt='' />
