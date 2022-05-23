@@ -1,21 +1,17 @@
-.social-login {
-    text-align: center;
-}
-
 .social-login button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    text-align: center;
+    background-color: white;
     border: 1px solid #797979;
     padding: 12px 0;
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: 600;
     width: 100%;
 }
 
 .social-login button:hover {
-    border: 1px solid #F25C05;
-    color: #F25C05;
+    border: 1px solid #FFB700;
+    color: #FFB700;
+    transition: 0.2s;
 }
 
 .social-login button>img {

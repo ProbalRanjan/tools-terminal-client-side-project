@@ -8,6 +8,7 @@ import Signup from './Pages/Login/Signup/Signup';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import PageNotFound from './Pages/Shared/PageNotFound/PageNotFound';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

@@ -1,18 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './HeroBanner.css';
 
 const HeroBanner = () => {
     return (
-        <div class="hero min-h-screen">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <img src="https://i.ibb.co/hZ5bpL5/hero-banner-img.png" alt='' class="w-full lg:w-3/6" />
-                <div>
-                    <h1 class="text-5xl font-bold">
-                        <span className='text-xl font-medium'>Welcome to <br /></span>
-                        Tools Terminal
+        <div className='container'>
+            <div className="hero-container">
+                <div className='hero-info'>
+                    <h1>Welcome to<br />
+                        <span>Tools Terminal</span>
                     </h1>
-                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button class="btn btn-primary">Login</button>
+                    <p>Tools Terminal is world class tools manufacturing company. It's well known industry in the world.</p>
+                    <Link to='/login'>
+                        <button className='primary-button'>Login</button>
+                    </Link>
                 </div>
+                <img src="https://i.ibb.co/hZ5bpL5/hero-banner-img.png" alt="" className='hero-img' />
             </div>
         </div>
     );

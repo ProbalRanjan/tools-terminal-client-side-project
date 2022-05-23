@@ -28,12 +28,14 @@ const RequireAuth = ({ children }) => {
     }
 
     if (!user.emailVerified) {
-        return <div>
+        return <div className='container my-5 email-verify'>
+            <img src="https://i.ibb.co/YcQWchk/email-verify.png" alt="" />
+            <h4>Please Verify your email to access the site!!</h4>
             <button className='global-button'
                 onClick={
                     async () => {
                         await sendEmailVerification();
-                        toast('Sent Email! Please check your mail!');
+                        toast('Email Sent! Please check your mail!');
                     }}>Verify Email</button>
         </div>
     }

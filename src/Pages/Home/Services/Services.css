@@ -1,0 +1,40 @@
+.services-container {
+    background-color: #e7e7e7;
+    padding: 40px 0;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service h5 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.service p {
+    margin-bottom: 0;
+}
+
+.service-icon {
+    font-size: 40px;
+    padding-right: 15px;
+    color: #FFB700;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+
+    .services {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+}

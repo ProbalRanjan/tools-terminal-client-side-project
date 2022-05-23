@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
+import './ResetPassword.css';
 
 const ResetPassword = () => {
 
@@ -27,32 +30,27 @@ const ResetPassword = () => {
     }
 
     return (
-        <div class="hero py-20">
-            <div class="hero-content text-center">
-                <div class="max-w-md">
-                    <h3 class="text-3xl font-bold">Forget your Password?</h3>
-                    <form onClick={handleResetPass}>
-                        <div class="form-control max-w-xs">
-                            <label class="label">
-                                <span class="label-text">Please, enter your email address</span>
-                            </label>
-                            <input
-                                class="input input-bordered w-auto max-w-xs"
-                                onBlur={handleEmailBlur}
-                                type="email"
-                                placeholder="Type here"
-                                required
-                            />
-                            {/* <label class="label">
-                                <span class="label-text-alt">Alt label</span>
-                            </label> */}
-                        </div>
-
-                        <button className='bg-primary hover:bg-[#ffc533] text-black rounded-lg py-3 text-center font-medium w-full'>
-                            <p>Continue to Reset Password</p>
-                        </button>
-                    </form>
+        <div className='container section-container'>
+            <div className='password-reset'>
+                <div>
+                    <h4>Forget Your Password</h4>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="Enter your email"
+                            className='input-field'
+                            onBlur={handleEmailBlur}
+                            required
+                        />
+                    </Form.Group>
+                    <button onClick={handleResetPass} className='primary-button-lg'>Reset Password</button>
                 </div>
+                <Link to='/login'>
+                    <button className='link-button2'>
+                        <p>Go back to the sign in page</p>
+                    </button>
+                </Link>
             </div>
         </div>
     );

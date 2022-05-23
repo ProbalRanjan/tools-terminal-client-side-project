@@ -1,0 +1,38 @@
+.page-not-found {
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+    justify-items: center;
+}
+
+.page-not-found img {
+    width: 100%;
+}
+
+.not-found-card {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 0;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 10px;
+    height: fit-content;
+}
+
+.not-found-card h3 {
+    font-size: 40px;
+    font-weight: 800;
+    color: #FFB700;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+
+    .page-not-found {
+        grid-template-columns: 1fr;
+    }
+
+    .not-found-card {
+        height: fit-content;
+    }
+}

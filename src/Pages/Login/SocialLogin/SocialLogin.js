@@ -37,7 +37,7 @@ const SocialLogin = () => {
 
     return (
         <div>
-            <div className='social-login pb-2'>
+            <div className='social-login'>
                 <button onClick={() => signInWithGoogle()}>
                     <img src={GoogleLogo} alt="google" />
                     Sign in with Google
