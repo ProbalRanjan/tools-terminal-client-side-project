@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import SignInImg from '../../../Assets/images/Login/login-user.png';
 
 const Login = () => {
 
@@ -41,25 +43,21 @@ const Login = () => {
 
     return (
         <div class="hero py-14">
-            <div class="hero-content grid lg:grid-cols-2 grid-rows-1 gap-4">
-                <img src="https://i.ibb.co/Gn7T9Nb/404-page.png" alt='' class="w-" />
+            <div class="hero-content grid lg:grid-cols-2 grid-rows-1 lg:gap-14">
+                <img src={SignInImg} alt='' />
                 <div class="card min-w-full bg-base-100 shadow-xl ">
-                    <div class="card-body text-center lg:px-28 lg:my-16">
-                        <h2 className='text-2xl font-semibold text-primary'>Login</h2>
-
-                        <SocialLogin></SocialLogin>
-
-                        <div class="divider">OR</div>
+                    <div class="card-body lg:px-28 lg:my-14">
+                        <h2 className='text-xl lg:text-3xl font-semibold text-center pb-5'>Login to <span className='text-primary'>Tools Terminal</span></h2>
 
                         <form onSubmit={handleSubmit(onSubmit)}>
 
                             {/* Input Email */}
                             <div class="form-control">
                                 <label class="label">
-                                    <span class="label-text font-medium">Email Address</span>
+                                    <span class="label-text font-medium lg:text-lg">Email Address</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="email"
                                     placeholder="username@email.com"
                                     class="input input-bordered"
                                     {...register("email", {
@@ -75,15 +73,15 @@ const Login = () => {
                                 />
 
                                 <label class="label">
-                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                    {errors?.email?.type === 'required' && <span className="label-text-alt text-red-600 font-medium text-sm">{errors.email.message}</span>}
+                                    {errors?.email?.type === 'pattern' && <span className="label-text-alt text-red-600 font-medium text-sm">{errors.email.message}</span>}
                                 </label>
                             </div>
 
                             {/* Input PassWord */}
                             <div class="form-control">
                                 <label class="label">
-                                    <span class="label-text font-medium">Password</span>
+                                    <span class="label-text font-medium lg:text-lg">Password</span>
                                 </label>
                                 <input
                                     type="password"
@@ -102,13 +100,25 @@ const Login = () => {
                                 />
 
                                 <label class="label">
-                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-600 font-medium text-sm">{errors.email.message}</span>}
+                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-600 font-medium text-sm">{errors.email.message}</span>}
                                 </label>
                             </div>
 
-                            <input type="submit" value="Login" className='btn btn-primary w-full' />
+                            <Link to='/resetPass'>
+                                <button className='text-primary font-medium pb-4 float-right hover:text-neutral'>
+                                    <p>Forget Password?</p>
+                                </button>
+                            </Link>
+
+                            <input type="submit" value="Login" className='bg-primary hover:bg-[#ffc533] w-full text-black rounded-lg py-3 text-center font-medium' />
                         </form>
+
+                        <div class="divider py-4">Or login with</div>
+
+                        <SocialLogin></SocialLogin>
+
+                        <p class="font-medium pt-2">Don't have account? <span className='text-primary hover:text-neutral'><Link to='/signup'>Signup Now</Link></span></p>
 
                     </div>
                 </div>

@@ -1,11 +1,12 @@
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
+import './SocialLogin.css';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
-import Loading from '../../Shared/Loading/Loading'
+import Loading from '../../Shared/Loading/Loading';
+import GoogleLogo from '../../../Assets/icons/google.png';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SocialLogin = () => {
 
@@ -31,15 +32,17 @@ const SocialLogin = () => {
     }
 
     if (error) {
-        return toast(error?.message)
+        return toast(error.message)
     }
 
     return (
-        <div className='bg-[#4081EC] hover:bg-[#3A63BE] w-full text-white rounded-lg py-3'>
-            <button onClick={() => signInWithGoogle()}>
-                <FontAwesomeIcon className='pr-4' icon={faGoogle} />
-                Sign in with Google
-            </button>
+        <div>
+            <div className='social-login pb-2'>
+                <button onClick={() => signInWithGoogle()}>
+                    <img src={GoogleLogo} alt="google" />
+                    Sign in with Google
+                </button>
+            </div>
         </div>
     );
 };
