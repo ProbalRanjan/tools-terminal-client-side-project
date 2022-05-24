@@ -1,6 +1,7 @@
 .services-container {
     background-color: #e7e7e7;
     padding: 40px 0;
+    margin-bottom: 40px;
 }
 
 .services {
@@ -35,6 +36,10 @@
     .services {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+
+    .services-container {
+        margin-bottom: 0;
     }
 
 }

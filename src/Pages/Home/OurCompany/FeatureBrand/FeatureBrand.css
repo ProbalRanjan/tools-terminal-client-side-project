@@ -1,0 +1,23 @@
+.feature-brand {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.feature-brand img {
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .feature-brand {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding-top: 10px;
+    }
+
+    .feature-brand img {
+        width: 70%;
+    }
+}
