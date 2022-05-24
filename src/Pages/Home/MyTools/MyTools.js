@@ -21,9 +21,6 @@ const MyTools = () => {
                     ></MyTool>)
                 }
             </div>
-            {/* <Link style={{ textDecoration: "none" }} to='/manageinventory'>
-                <button className='global-button manage-btn'>Manage Inventory</button>
-            </Link> */}
         </div>
     );
 };
