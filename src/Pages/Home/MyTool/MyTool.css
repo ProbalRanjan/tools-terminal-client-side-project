@@ -1,0 +1,17 @@
+.tool-details {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.tool-details img {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .tool-details {
+        margin: 0 20px;
+    }
+}
