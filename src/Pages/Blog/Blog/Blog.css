@@ -1,0 +1,21 @@
+.blog-section h1 {
+    color: #FFB700;
+    text-align: center;
+    font-weight: 600;
+}
+
+.question-answer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    grid-gap: 40px;
+    padding: 20px 0;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+
+    .question-answer {
+        grid-template-columns: 1fr;
+    }
+
+}
