@@ -2,6 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
 import Home from './Pages/Home/Home/Home';
+import About from './Pages/About/About/About';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import Blog from './Pages/Blog/Blog/Blog';
+import Contact from './Pages/Contact/Contact/Contact';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import Login from './Pages/Login/Login/Login';
 import ResetPassword from './Pages/Login/ResetPassword/ResetPassword';
@@ -11,6 +15,9 @@ import Header from './Pages/Shared/Header/Header';
 import Purchase from './Pages/Purchase/Purchase/Purchase';
 import PageNotFound from './Pages/Shared/PageNotFound/PageNotFound';
 import 'react-toastify/dist/ReactToastify.css';
+import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
+import AddReview from './Pages/Dashboard/AddReview/AddReview';
+import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
 
 function App() {
   return (
@@ -19,18 +26,40 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
-        <Route path='/purchase' element={
+        <Route path='/about' element={<About />}></Route>
+        <Route path='/purchase/:id' element={
           <RequireAuth>
             <Purchase />
           </RequireAuth>
         }></Route>
+        <Route path='/dashboard' element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        }>
+          <Route index element={<MyOrder />}></Route>
+          <Route path='addReview' element={<AddReview />}></Route>
+          <Route path='myProfile' element={<MyProfile />}></Route>\
+        </Route>
+        <Route path='/blog' element={<Blog />}></Route>
+        <Route path='/contact' element={<Contact />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/resetPass' element={<ResetPassword />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='*' element={<PageNotFound />}></Route>
       </Routes>
       <Footer></Footer>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useTools = () => {
+const useReviews = () => {
 
     const [reviews, setReviews] = useState([]);
 
@@ -13,4 +13,4 @@ const useTools = () => {
     return [reviews, setReviews]
 };
 
-export default useTools;
+export default useReviews;

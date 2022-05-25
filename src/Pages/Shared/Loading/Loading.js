@@ -3,7 +3,7 @@ import './Loading.css';
 
 const Loading = () => {
     return (
-        <div>
+        <div className='container loading-spinner'>
             <div className="sk-chase">
                 <div className="sk-chase-dot"></div>
                 <div className="sk-chase-dot"></div>

@@ -10,6 +10,14 @@
     width: 70%;
 }
 
+.tool-info h5 {
+    font-weight: 600;
+}
+
+.tool-info span {
+    font-weight: 600;
+}
+
 @media only screen and (min-width: 0px) and (max-width: 576px) {
     .tool-details {
         margin: 0 20px;

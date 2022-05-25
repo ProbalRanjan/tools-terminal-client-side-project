@@ -1,0 +1,28 @@
+.purchase-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 50px;
+}
+
+.purchase-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.purchase-details img {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+.purchase-details span {
+    font-weight: 600;
+    color: #FFB700;
+}
+
+.purchase-form {
+    padding-top: 50px;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}

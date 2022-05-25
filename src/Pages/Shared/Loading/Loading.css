@@ -1,3 +1,10 @@
+.loading-spinner {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .sk-chase {
     width: 40px;
     height: 40px;
