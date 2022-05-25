@@ -1,0 +1,22 @@
+.personal-info {
+    text-align: center;
+}
+
+.personal-info img {
+    border-radius: 1000px;
+    padding-bottom: 20px;
+}
+
+.personal-info h1 {
+    font-size: 34px;
+    font-weight: 600;
+    color: #FFB700;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+
+    .personal-info img {
+        width: 60%;
+    }
+
+}

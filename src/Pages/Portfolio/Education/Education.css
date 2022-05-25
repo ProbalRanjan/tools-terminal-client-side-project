@@ -1,0 +1,46 @@
+.education-container h2 {
+    text-align: center;
+}
+
+.education-background {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    padding-top: 20px;
+}
+
+.education-background h3 {
+    text-align: center;
+    font-weight: 600;
+    color: #FFB700;
+}
+
+.education {
+    height: 250px;
+    background-color: #fff8e6;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.education p {
+    text-align: start;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+
+    .education-container {
+        margin: 0 10px;
+    }
+
+    .education-background {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .education {
+        height: 220px;
+    }
+
+}

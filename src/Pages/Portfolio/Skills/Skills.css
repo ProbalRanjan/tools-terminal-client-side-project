@@ -1,0 +1,52 @@
+.skills-container {
+    padding-top: 20px;
+}
+
+.skills-container CardGroup {
+    gap: 40px;
+}
+
+.skills-tools {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+}
+
+/* .skills-tools h3 {
+    text-align: center;
+    font-weight: 600;
+    text-decoration: underline;
+    color: #F25C05;
+}
+ */
+
+.skills-tools h5 {
+    padding-top: 20px;
+}
+
+.skills,
+.tools {
+    padding: 10px 40px;
+}
+
+.progress-bar {
+    background-color: #ffb700;
+}
+
+.primary-progress-bar {
+    background-color: #fff1cc;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+
+    .skills-tools {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+
+    .skills,
+    .tools {
+        padding: 0px 20px;
+    }
+
+}
