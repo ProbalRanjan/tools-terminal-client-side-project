@@ -1,100 +1,98 @@
 import React, { useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import './Purchase.css';
 
 const Purchase = () => {
 
-    const [tool, setTool] = useState({});
+    const [product, setProduct] = useState({});
     const { id } = useParams();
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
+    const { register, handleSubmit, formState: { errors, isValid } } = useForm({
+        mode: "onChange"
+    });
 
+    // Destructuring Product
+    const { img, name, description, minOrder, quantity, price } = product;
+
+    // Load single inventory
     useEffect(() => {
         const url = `http://localhost:5000/purchase/${id}`
         fetch(url)
             .then(res => res.json())
-            .then(data => setTool(data))
+            .then(data => setProduct(data))
 
     }, [id])
 
-    /* const handlePurchaseChange = event => {
-        setPurchase(event.target.value)
-    } */
-
-    const handlePurchase = event => {
-        event.preventDefault();
-        const inputQuantity = parseInt(event.target.quantity.value);
-
-        if (inputQuantity <= 0) {
-            toast.error("Please set the quantity first")
-        }
-
-        if (inputQuantity < tool.minOrder) {
-            return toast.error(`Order at least ${tool.minOrder} Quantity`)
-        }
-
-        if (inputQuantity > tool.quantity) {
-            return toast.error(`Available Only ${tool.quantity} tools`)
-        }
-
-        if (inputQuantity >= tool.minOrder && inputQuantity <= tool.quantity) {
-            const purchaseQuantity = (tool.quantity) - inputQuantity;
-            const currentQuantity = { ...tool, quantity: purchaseQuantity }
-            setTool(currentQuantity);
-            toast('Thank Your for Purchase')
-        }
-
+    // React Hook Form Submit
+    const onSubmit = data => {
+        console.log(data)
     }
 
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='container section-container'>
-            {/* <h2>Hey! <span>{(user.displayName).split(" ")[0]}</span>, Here's your tool!!</h2> */}
-            <div className='purchase-container'>
-                <div className='purchase-details'>
-                    <img src={tool.img} alt="" />
-                    <div>
-                        <h3>{tool.name}</h3>
-                        <p>{tool.description}</p>
-                        <p><span>Minimum Order: </span>{tool.minOrder}</p>
-                        <p><span>Quantity: </span>{tool.quantity}</p>
-                        <p><span>${tool.price}</span></p>
-                    </div>
-                </div>
 
-                <div className='quantity-input'>
-
-                    <Form onSubmit={handlePurchase}>
-                        <Form.Group className="mb-3" controlId="formBasicQuantity">
-                            <Form.Label>Your Quantity</Form.Label>
-                            <Form.Control
-                                type="number"
-                                name='quantity'
-                                className='input-field'
-                                // placeholder={tool.minOrder}
-                                required />
-                        </Form.Group>
-
-                        <button className='primary-button-lg'>Submit</button>
-                    </Form>
-
+            <div className='product-details'>
+                <img src={img} alt="" />
+                <div>
+                    <h3>{name}</h3>
+                    <p>{description}</p>
+                    <p><span>Minimum Order: </span>{minOrder}</p>
+                    <p><span>Available: </span>{quantity}</p>
+                    <p><span>Price: </span>${price}</p>
                 </div>
             </div>
 
-            <div className='purchase-form'>
-                <h2>Please fill the form to purchase</h2>
-                <Form>
+            <div className='section-container purchase-form'>
+                <h2 className='text-center fw-bold py-4'>Please fill the form to tool</h2>
+
+                <Form onSubmit={handleSubmit(onSubmit)}>
+
+                    <Form.Group className="mb-3" controlId="formBasicQuantity">
+                        <Form.Label>Quantity</Form.Label>
+                        <Form.Control
+                            type="number"
+                            placeholder="Your Quantity"
+                            className='input-field'
+                            defaultValue={minOrder}
+                            {...register("minOrder", {
+                                required: {
+                                    value: true,
+                                    message: "Please input your quantity"
+                                },
+                                min: {
+                                    value: `${minOrder}`,
+                                    message: `Al least ${minOrder} products can be purchased`
+                                },
+                                max: {
+                                    value: `${quantity}`,
+                                    message: `You can order only ${quantity} products`
+                                }
+                            })}
+
+                        />
+                        {errors.minOrder?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.minOrder.message}</span>}
+                        {errors.minOrder?.type === 'max' && <span style={{ color: "#f25c05" }}>{errors.minOrder.message}</span>}
+                        {errors.minOrder?.type === 'min' && <span style={{ color: "#f25c05" }}>{errors.minOrder.message}</span>}
+                    </Form.Group>
+
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Name</Form.Label>
                         <Form.Control
                             type="text"
                             className='input-field'
-                            placeholder={user.displayName}
-                            value={user.displayName}
-                            disabled />
+                            value={user?.displayName}
+                            {...register("name")}
+                            readOnly
+                        />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -102,35 +100,70 @@ const Purchase = () => {
                         <Form.Control
                             type="email"
                             className='input-field'
-                            placeholder={user.email}
-                            value={user.email}
-                            disabled />
+                            value={user?.email}
+                            {...register("email")}
+                            readOnly
+                        />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicAddress">
                         <Form.Label>Present Address</Form.Label>
-                        <Form.Control type="text" className='input-field' placeholder="You Address" required />
+                        <Form.Control
+                            type="text"
+                            placeholder="Your Address"
+                            className='input-field'
+                            {...register("address", {
+                                required: {
+                                    value: true,
+                                    message: "Address is required"
+                                },
+                                pattern: {
+                                    value: /(?=.*?[0-9])/,
+                                    message: "Please input your house number"
+                                }
+                            })}
+                        />
+                        {errors.address?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.address.message}</span>}
+                        {errors.address?.type === 'pattern' && <span style={{ color: "#f25c05" }}>{errors.address.message}</span>}
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPhone">
                         <Form.Label>Phone Number</Form.Label>
-                        <Form.Control type="text" className='input-field' placeholder="+88 0123456789" required />
+                        <Form.Control
+                            type="number"
+                            placeholder="+88 0123 456 789"
+                            className='input-field'
+                            {...register("phoneNumber", {
+                                required: {
+                                    value: true,
+                                    message: "Phone Number is required"
+                                },
+                                minLength: {
+                                    value: 11,
+                                    message: "Please put 11 digit phone number"
+                                },
+                                maxLength: {
+                                    value: 11,
+                                    message: "Please input a valid phone number"
+                                }
+                            })}
+                        />
+                        {errors.phoneNumber?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.phoneNumber.message}</span>}
+                        {errors.phoneNumber?.type === 'minLength' && <span style={{ color: "#f25c05" }}>{errors.phoneNumber.message}</span>}
+                        {errors.phoneNumber?.type === 'maxLength' && <span style={{ color: "#f25c05" }}>{errors.phoneNumber.message}</span>}
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicShop">
-                        <Form.Label>Shop Name</Form.Label>
-                        <Form.Control type="text" className='input-field' placeholder="Enter your Shop Name" required />
-                    </Form.Group>
+                    <Button
+                        variant="#FFB700"
+                        type="submit"
+                        className='primary-button-lg'
+                        disabled={!isValid}
+                    >
+                        Order Now
+                    </Button>
 
-                    <Form.Group className="mb-3" controlId="formBasicOrder">
-                        <Form.Label>Shop Name</Form.Label>
-                        <Form.Control type="text" className='input-field' placeholder="Enter your Shop Name" required />
-                    </Form.Group>
-
-                    <button className='primary-button-lg'>Submit</button>
                 </Form>
             </div>
-
         </div>
     );
 };

@@ -18,9 +18,9 @@ const MyTool = ({ tool }) => {
                 <h5 title={name}>{name.slice(0, 25)}...</h5>
                 <p>{description.slice(0, 60)}...</p>
                 <p><span>Minimum Order: </span>{minOrder}</p>
-                <p><span>Quantity: </span>{quantity}</p>
-                <p style={{ color: '#FFB700' }}><span>${price}</span></p>
-                <button className='primary-button-lg' onClick={() => handleToolsId(_id)}>Purchase</button>
+                <p><span>Available: </span>{quantity}</p>
+                <p><span>Price: </span>${price}</p>
+                <button className='primary-button-lg' onClick={() => handleToolsId(_id)}>Order</button>
             </div>
         </div>
     );

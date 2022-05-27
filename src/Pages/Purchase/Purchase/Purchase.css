@@ -1,21 +1,17 @@
-.purchase-container {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 50px;
-}
-
-.purchase-details {
+.product-details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.purchase-details img {
-    width: 80%;
+.product-details img {
+    width: 60%;
     display: block;
     margin: 0 auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 40px;
 }
 
-.purchase-details span {
+.product-details span {
     font-weight: 600;
     color: #FFB700;
 }

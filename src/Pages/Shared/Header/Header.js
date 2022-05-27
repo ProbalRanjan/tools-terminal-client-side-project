@@ -2,16 +2,18 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import './Header.css';
 
 const Header = () => {
 
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     const handleSignOut = () => {
         signOut(auth);
+        navigate('/');
     }
 
 
@@ -38,6 +40,10 @@ const Header = () => {
                                 <Link to='/portfolio'>Portfolio</Link>
                                 <Link to='/blog'>Blog</Link>
                                 <Link to='/contact'>Contact</Link>
+
+                                {
+                                    user && <Link to='/' style={{ color: "#FFB700", fontWeight: "600" }}>{(user.displayName).split(" ")[0]}</Link>
+                                }
 
                                 {
                                     !user ?

@@ -67,7 +67,7 @@ const Login = () => {
                                         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                                     }
                                 })}
-                                required
+
                             />
                             {errors.email?.type === 'required' && <span style={{ color: "#f25c05" }}>Email is Required</span>}
                             {errors.email?.type === 'pattern' && <span style={{ color: "#f25c05" }}>Provide a valid Email</span>}
@@ -87,7 +87,7 @@ const Login = () => {
                                         value: 6,
                                     }
                                 })}
-                                required
+
                             />
                             {errors.password?.type === 'required' && <span style={{ color: "#f25c05" }}>Password is Required</span>}
                             {errors.password?.type === 'minLength' && <span style={{ color: "#f25c05" }}>Must be 6 characters or longer</span>}
