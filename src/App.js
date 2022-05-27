@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './Pages/Home/Home/Home';
 import About from './Pages/About/About/About';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
@@ -14,7 +15,6 @@ import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import Purchase from './Pages/Purchase/Purchase/Purchase';
 import PageNotFound from './Pages/Shared/PageNotFound/PageNotFound';
-import 'react-toastify/dist/ReactToastify.css';
 import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';

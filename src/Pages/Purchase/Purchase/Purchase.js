@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import './Purchase.css';
@@ -17,7 +18,7 @@ const Purchase = () => {
     });
 
     // Destructuring Product
-    const { img, name, description, minOrder, quantity, price } = product;
+    const { _id, img, name, description, minOrder, quantity, price } = product;
 
     // Load single inventory
     useEffect(() => {
@@ -30,7 +31,34 @@ const Purchase = () => {
 
     // React Hook Form Submit
     const onSubmit = data => {
-        console.log(data)
+        const inputQuantity = parseInt(data.quantity);
+        const totalPrice = inputQuantity * price;
+        const order = {
+            customerName: data.name,
+            email: data.email,
+            address: data.address,
+            phoneNumber: data.phoneNumber,
+            _id,
+            name,
+            price,
+            inputQuantity,
+            totalPrice
+        }
+        // console.log(order)
+
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                toast.success("Order placed successfully")
+            })
+
     }
 
     if (loading) {
@@ -63,7 +91,7 @@ const Purchase = () => {
                             placeholder="Your Quantity"
                             className='input-field'
                             defaultValue={minOrder}
-                            {...register("minOrder", {
+                            {...register("quantity", {
                                 required: {
                                     value: true,
                                     message: "Please input your quantity"
@@ -79,9 +107,9 @@ const Purchase = () => {
                             })}
 
                         />
-                        {errors.minOrder?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.minOrder.message}</span>}
-                        {errors.minOrder?.type === 'max' && <span style={{ color: "#f25c05" }}>{errors.minOrder.message}</span>}
-                        {errors.minOrder?.type === 'min' && <span style={{ color: "#f25c05" }}>{errors.minOrder.message}</span>}
+                        {errors.quantity?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.quantity.message}</span>}
+                        {errors.quantity?.type === 'max' && <span style={{ color: "#f25c05" }}>{errors.quantity.message}</span>}
+                        {errors.quantity?.type === 'min' && <span style={{ color: "#f25c05" }}>{errors.quantity.message}</span>}
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicName">
@@ -117,14 +145,14 @@ const Purchase = () => {
                                     value: true,
                                     message: "Address is required"
                                 },
-                                pattern: {
+                                /* pattern: {
                                     value: /(?=.*?[0-9])/,
                                     message: "Please input your house number"
-                                }
+                                } */
                             })}
                         />
                         {errors.address?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.address.message}</span>}
-                        {errors.address?.type === 'pattern' && <span style={{ color: "#f25c05" }}>{errors.address.message}</span>}
+                        {/* {errors.address?.type === 'pattern' && <span style={{ color: "#f25c05" }}>{errors.address.message}</span>} */}
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPhone">

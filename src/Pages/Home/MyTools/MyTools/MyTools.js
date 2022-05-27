@@ -1,11 +1,23 @@
-import React from 'react';
-import useTools from '../../../hooks/useTools/useTools';
+import React, { useEffect, useState } from 'react';
+import useTools from '../../../../hooks/useTools/useTools';
+import Loading from '../../../Shared/Loading/Loading';
 import MyTool from '../MyTool/MyTool';
 import './MyTools.css';
 
 const MyTools = () => {
 
     const [tools] = useTools();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (tools.length > 0) {
+            setLoading(false);
+        }
+    })
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='container section-container'>
