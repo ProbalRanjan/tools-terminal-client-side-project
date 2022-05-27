@@ -1,11 +1,23 @@
-import React from 'react';
-import useReviews from '../../../hooks/useReviews/useReviews';
+import React, { useEffect, useState } from 'react';
+import useReviews from '../../../../hooks/useReviews/useReviews';
+import Loading from '../../../Shared/Loading/Loading';
 import Review from '../Review/Review';
 import './Reviews.css';
 
 const Reviews = () => {
 
     const [reviews] = useReviews();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (reviews.length > 0) {
+            setLoading(false);
+        }
+    })
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='container section-container'>

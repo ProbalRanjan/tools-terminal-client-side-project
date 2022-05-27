@@ -29,7 +29,7 @@ const Purchase = () => {
 
     }, [id])
 
-    // React Hook Form Submit
+    // React Hook Form to place Order
     const onSubmit = data => {
         const inputQuantity = parseInt(data.quantity);
         const totalPrice = inputQuantity * price;

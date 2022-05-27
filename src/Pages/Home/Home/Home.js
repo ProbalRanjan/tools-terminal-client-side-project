@@ -4,7 +4,7 @@ import HeroBanner from '../HeroBanner/HeroBanner';
 import MyTools from '../MyTools/MyTools/MyTools';
 import FeatureBrand from '../OurCompany/FeatureBrand/FeatureBrand';
 import OurCompany from '../OurCompany/OurCompany/OurCompany';
-import Reviews from '../Reviews/Reviews';
+import Reviews from '../Reviews/Reviews/Reviews';
 import Services from '../Services/Services';
 
 const Home = () => {

@@ -16,9 +16,8 @@ const Dashboard = () => {
                     </Nav>
                 </div>
                 <Outlet></Outlet>
-
-
             </div>
+
         </div>
     );
 };

@@ -51,6 +51,8 @@
 
     .site-logo img {
         width: 110px;
+        display: block;
+        margin: 0 auto;
     }
 
     .header-link {
