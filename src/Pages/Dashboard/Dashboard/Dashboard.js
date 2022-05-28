@@ -10,9 +10,15 @@ const Dashboard = () => {
             <div className='dashboard-container'>
                 <div className='side-navbar'>
                     <Nav className="flex-column sidebar-link">
-                        <Link to='/dashboard'>My Order</Link>
+                        <Link to='/dashboard'>My Profile</Link>
+
+                        <Link to='/dashboard/order'>My Order</Link>
                         <Link to='/dashboard/addReview'>Add Review</Link>
-                        <Link to='/dashboard/myProfile'>My Profile</Link>
+
+                        <Link to='/dashboard/allUsers'>Manage Users</Link>
+                        <Link to='/dashboard/manageOrders'>Manage Orders</Link>
+                        <Link to='/dashboard/addProducts'>Add Products</Link>
+                        <Link to='/dashboard/manageProducts'>Manage Products</Link>
                     </Nav>
                 </div>
                 <Outlet></Outlet>

@@ -18,6 +18,10 @@ import PageNotFound from './Pages/Shared/PageNotFound/PageNotFound';
 import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
+import AllUsers from './Pages/Dashboard/AllUsers/AllUsers';
+import ManageOrders from './Pages/Dashboard/ManageOrders/ManageOrders';
+import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
+import AddProducts from './Pages/Dashboard/AddProducts/AddProducts';
 import Portfolio from './Pages/Portfolio/Portfolio/Portfolio';
 
 function App() {
@@ -33,15 +37,27 @@ function App() {
             <Purchase />
           </RequireAuth>
         }></Route>
+
+        <Route path='/dashboard' element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        }></Route>
+
         <Route path='/dashboard' element={
           <RequireAuth>
             <Dashboard />
           </RequireAuth>
         }>
-          <Route index element={<MyOrder />}></Route>
+          <Route index element={<MyProfile />}></Route>
+          <Route path='order' element={<MyOrder />}></Route>
           <Route path='addReview' element={<AddReview />}></Route>
-          <Route path='myProfile' element={<MyProfile />}></Route>\
+          <Route path='allUsers' element={<AllUsers />}></Route>\
+          <Route path='manageOrders' element={<ManageOrders />}></Route>\
+          <Route path='addProducts' element={<AddProducts />}></Route>\
+          <Route path='manageProducts' element={<ManageProducts />}></Route>\
         </Route>
+
         <Route path='/portfolio' element={<Portfolio />}></Route>
         <Route path='/blog' element={<Blog />}></Route>
         <Route path='/contact' element={<Contact />}></Route>
