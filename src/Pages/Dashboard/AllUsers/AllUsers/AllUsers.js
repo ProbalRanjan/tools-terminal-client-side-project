@@ -26,14 +26,20 @@ const AllUsers = () => {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 403) {
+                    toast.error("Create an Admin Failed");
+                }
+                return res.json()
+            })
             .then(data => {
-                refetch();
-                toast.success("Create Admin Successfully")
+                if (data.modifiedCount > 0) {
+                    toast.success("Create an Admin Successfully");
+                    refetch();
+                }
             })
 
     }
-
 
     if (isLoading) {
         return <Loading></Loading>
