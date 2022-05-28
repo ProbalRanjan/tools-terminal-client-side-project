@@ -47,7 +47,7 @@ const AllUsers = () => {
 
     return (
         <div>
-            <h1>All Users List</h1>
+            <h2>All Users List</h2>
 
             <div>
                 <Table responsive="sm">

@@ -34,6 +34,7 @@ const Dashboard = () => {
                                 <Link to='/dashboard/manageProducts'>Manage Products</Link>
                             </>
                         }
+
                     </Nav>
                 </div>
                 <Outlet></Outlet>

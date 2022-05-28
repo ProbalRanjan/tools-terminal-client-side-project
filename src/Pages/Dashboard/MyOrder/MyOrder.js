@@ -36,7 +36,7 @@ const MyOrder = () => {
 
     return (
         <div>
-            <h1>My Total Order: {orders?.length}</h1>
+            <h2>My Total Order: {orders?.length}</h2>
             <div>
                 <Table responsive="sm">
                     <thead>

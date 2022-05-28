@@ -4,7 +4,7 @@ import './ManageOrders.css';
 const ManageOrders = () => {
     return (
         <div>
-            <h1>ManageOrders</h1>
+            <h2>Manage Orders</h2>
         </div>
     );
 };

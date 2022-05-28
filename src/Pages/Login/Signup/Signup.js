@@ -86,14 +86,16 @@ const Signup = () => {
                                 {...register("email", {
                                     required: {
                                         value: true,
+                                        message: 'Email is Required'
                                     },
                                     pattern: {
                                         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                        message: 'Provide a valid Email'
                                     }
                                 })}
                             />
-                            {errors?.email?.type === 'required' && <span style={{ color: "#f25c05" }}>Email is Required</span>}
-                            {errors?.email?.type === 'pattern' && <span style={{ color: "#f25c05" }}>Provide a valid Email</span>}
+                            {errors?.email?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.email.message}</span>}
+                            {errors?.email?.type === 'pattern' && <span style={{ color: "#f25c05" }}>{errors.email.message}</span>}
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -105,14 +107,16 @@ const Signup = () => {
                                 {...register("password", {
                                     required: {
                                         value: true,
+                                        message: 'Password is Required'
                                     },
                                     minLength: {
                                         value: 6,
+                                        message: 'Must be 6 characters or longer'
                                     }
                                 })}
                             />
-                            {errors?.password?.type === 'required' && <span style={{ color: "#f25c05" }}>Password is Required</span>}
-                            {errors?.password?.type === 'minLength' && <span style={{ color: "#f25c05" }}>Must be 6 characters or longer</span>}
+                            {errors?.password?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.password.message}</span>}
+                            {errors?.password?.type === 'minLength' && <span style={{ color: "#f25c05" }}>{errors.password.message}</span>}
                         </Form.Group>
 
                         {signInError}
