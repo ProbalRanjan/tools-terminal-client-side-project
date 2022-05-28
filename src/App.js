@@ -3,7 +3,6 @@ import { ToastContainer } from 'react-toastify';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from './Pages/Home/Home/Home';
-import About from './Pages/About/About/About';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import Blog from './Pages/Blog/Blog/Blog';
 import Contact from './Pages/Contact/Contact/Contact';
@@ -24,6 +23,7 @@ import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import AddProducts from './Pages/Dashboard/AddProducts/AddProducts';
 import Portfolio from './Pages/Portfolio/Portfolio/Portfolio';
 import RequireAdmin from './Pages/Login/RequireAdmin/RequireAdmin';
+import Payment from './Pages/Payment/Payment';
 
 function App() {
   return (
@@ -32,7 +32,6 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
-        <Route path='/about' element={<About />}></Route>
         <Route path='/purchase/:id' element={
           <RequireAuth>
             <Purchase />
@@ -63,6 +62,11 @@ function App() {
           <Route path='manageProducts' element={<ManageProducts />}></Route>\
         </Route>
 
+        <Route path='/payment' element={
+          <RequireAuth>
+            <Payment />
+          </RequireAuth>
+        }></Route>
         <Route path='/portfolio' element={<Portfolio />}></Route>
         <Route path='/blog' element={<Blog />}></Route>
         <Route path='/contact' element={<Contact />}></Route>

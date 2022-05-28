@@ -94,7 +94,7 @@ const MyProfile = () => {
                         />
                     </Form.Group>
 
-                    <button className='primary-button-lg'>Add a Review</button>
+                    <button className='primary-button-lg'>Update</button>
                 </Form>
 
             </div>

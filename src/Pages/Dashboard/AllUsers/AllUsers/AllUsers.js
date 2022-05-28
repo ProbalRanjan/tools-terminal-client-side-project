@@ -57,7 +57,7 @@ const AllUsers = () => {
                             <th>Email</th>
                             <th>Role</th>
                             <th>Make Admin</th>
-                            <th>Remove User</th>
+                            {/* <th>Remove User</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -76,12 +76,12 @@ const AllUsers = () => {
                                                 <p className='fw-bold' style={{ color: '#FFB700' }}>Already Admin</p>
                                         }
                                     </td>
-                                    <td>
+                                    {/* <td>
                                         <button
                                             className='accent-button'>
                                             Remove
                                         </button>
-                                    </td>
+                                    </td> */}
                                 </tr>)
                         }
 

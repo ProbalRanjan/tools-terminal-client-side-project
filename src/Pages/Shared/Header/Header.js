@@ -30,7 +30,6 @@ const Header = () => {
                         <Nav className="ms-auto">
                             <div className='header-link'>
                                 <Link to='/'>Home</Link>
-                                <Link to='/about'>About</Link>
 
                                 {
                                     user && <>

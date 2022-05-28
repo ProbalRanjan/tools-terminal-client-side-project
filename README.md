@@ -1,70 +1,43 @@
 # Tools Terminal Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tools Terminal is the wonderful manufacturing company to manufacture different types of tools for using our daily life. [Please Visit Our Website]() to add your inventory on our warehouse.
 
-## Available Scripts
+## Our Website Link
 
-In the project directory, you can run:
+[](). 
 
-### `npm start`
+## `Features of Website ------`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Our Home page is stands for hero banner, our capability, our website's tools, feature brands, business summary, testimonial and good looking header and footer for all pages.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Our Dashboard is making for both admin and user for manage their profile, order, make admin and other functionality have been added.
 
-### `npm test`
+* On the Portfolio page there are some of information about the website creator.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* On the Blog page You can see some question answer.
 
-### `npm run build`
+* On the contact page you can contact with us.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* And finally, there are a Login and Sign up page for the user to explore more website's features.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## `Technologies that use for the Website ------`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**The list of tools, library and framework for the website are --**
 
-### `npm run eject`
+* React Library
+* Express.js
+* Google Firebase
+* React Firebase Hooks
+* React Router
+* MongoDB
+* React Toster
+* React Bootstrap
+* Vanilla CSS
+* JSX
+* Fontawesome
+* Google Fonts
+* Heroku
+* JWT Token
+* Image BB
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Thank You.
