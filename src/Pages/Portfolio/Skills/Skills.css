@@ -40,7 +40,7 @@
 @media only screen and (min-width: 0px) and (max-width: 576px) {
 
     .skills-tools {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 

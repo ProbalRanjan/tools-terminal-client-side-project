@@ -8,8 +8,8 @@ const Blog = () => {
                 <h1>My Blog</h1>
             </div>
             <div>
-                <div className="question-answer pb-3">
-                    {/* <img src="" alt="" /> */}
+                <div className="question-answer">
+                    <img src="https://i.ibb.co/d7N0YVm/ques1.jpg" alt="" />
                     <div>
                         <h4><span>Q1:</span> How will you improve the performance of a React Application?</h4>
                         <h6><span style={{ textDecoration: "underline" }}>Ans: </span>
@@ -25,8 +25,8 @@ const Blog = () => {
                         </h6>
                     </div>
                 </div>
-                <div className="question-answer pb-3">
-                    {/* <img src="" alt="" /> */}
+                <div className="question-answer">
+                    <img src="https://i.ibb.co/dBDs7Wc/ques2.jpg" alt="" />
                     <div>
                         <h4><span>Q2:</span> What are the different ways to manage a state in a React application?</h4>
                         <h6><span style={{ textDecoration: "underline" }}>Ans: </span>
@@ -42,8 +42,8 @@ const Blog = () => {
                         </h6>
                     </div>
                 </div>
-                <div className="question-answer pb-3">
-                    {/* <img src="" alt="" /> */}
+                <div className="question-answer">
+                    <img src="https://i.ibb.co/kD42XVH/ques3.jpg" alt="" />
                     <div>
                         <h4><span>Q3:</span> How does prototypical inheritance work?</h4>
                         <h6><span style={{ textDecoration: "underline" }}>Ans: </span>
@@ -53,8 +53,8 @@ const Blog = () => {
                         </h6>
                     </div>
                 </div>
-                <div className="question-answer pb-3">
-                    {/* <img src="" alt="" /> */}
+                <div className="question-answer">
+                    <img src="https://i.ibb.co/L9081GV/ques4.jpg" alt="" />
                     <div>
                         <h4><span>Q4:</span> Why you do not set the state directly in React? For example, if you have const [products, setProducts] = useState([]). Why you do not set products = [...] instead, you use the setProducts.</h4>
                         <h6><span style={{ textDecoration: "underline" }}>Ans: </span>
@@ -62,8 +62,8 @@ const Blog = () => {
                         </h6>
                     </div>
                 </div>
-                <div className="question-answer pb-3">
-                    {/* <img src="" alt="" /> */}
+                <div className="question-answer">
+                    <img src="https://i.ibb.co/jHvc8Fz/ques5.jpg" alt="" />
                     <div>
                         <h4><span>Q1:</span> What is a unit test? Why should write unit tests?</h4>
                         <h6><span style={{ textDecoration: "underline" }}>Ans: </span>

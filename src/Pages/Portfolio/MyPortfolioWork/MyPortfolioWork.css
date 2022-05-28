@@ -7,8 +7,23 @@
 .projects img {
     width: 100%;
     padding: 20px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin-bottom: 30px;
+}
+
+.projects img:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: 0.2s;
+}
+
+.project-site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.project-site h3 {
+    font-weight: 600;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 576px) {
@@ -17,5 +32,9 @@
         grid-template-columns: repeat(1, 1fr);
         gap: 40px;
         padding: 0 20px;
+    }
+
+    .project-site {
+        display: block;
     }
 }

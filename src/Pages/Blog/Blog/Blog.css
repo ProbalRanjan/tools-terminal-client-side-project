@@ -2,25 +2,36 @@
     color: #FFB700;
     text-align: center;
     font-weight: 600;
-    padding-bottom: 20px;
 }
 
 .blog-section h4 {
     color: #F25C05;
 }
 
-/* .question-answer {
+.question-answer {
     display: grid;
     grid-template-columns: 1fr 2fr;
     align-items: center;
     grid-gap: 40px;
     padding: 20px 0;
-} */
+}
+
+.question-answer h6 {
+    font-weight: 400;
+}
+
+.question-answer img {
+    width: 100%;
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
 
 @media only screen and (min-width: 0px) and (max-width: 576px) {
 
-    /* .question-answer {
+    .question-answer {
         grid-template-columns: 1fr;
-    } */
+        gap: 20px;
+    }
 
 }
