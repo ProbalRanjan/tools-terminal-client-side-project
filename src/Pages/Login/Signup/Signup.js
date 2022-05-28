@@ -6,9 +6,10 @@ import { useForm } from 'react-hook-form';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Form } from 'react-bootstrap';
+import { toast } from 'react-toastify';
+import useToken from '../../../hooks/useToken/useToken';
 
 const Signup = () => {
 
@@ -26,23 +27,27 @@ const Signup = () => {
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+    const [token] = useToken(user);
+
     const onSubmit = async data => {
-        await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({ displayName: data.name });
+        await createUserWithEmailAndPassword(data?.email, data?.password);
+        await updateProfile({ displayName: data?.name });
     }
 
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
+            toast.success("Signup Successfully");
         }
-    })
+    }, [token, navigate, from, user])
 
     if (loading || updating) {
         return <Loading></Loading>;
     }
 
+    let signInError;
     if (error || updateError) {
-        return toast.error(error?.message || updateError?.message);
+        signInError = <p style={{ color: "#F25C05" }}>{error?.message || updateError?.message}</p>;
     }
 
     return (
@@ -65,11 +70,11 @@ const Signup = () => {
                                 {...register("name", {
                                     required: {
                                         value: true,
+                                        message: 'Name is Required'
                                     }
                                 })}
-                                required
                             />
-                            {errors.name?.type === 'required' && <span style={{ color: "#f25c05" }}>Name is Required</span>}
+                            {errors?.name?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.name.message}</span>}
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -86,10 +91,9 @@ const Signup = () => {
                                         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                                     }
                                 })}
-                                required
                             />
-                            {errors.email?.type === 'required' && <span style={{ color: "#f25c05" }}>Email is Required</span>}
-                            {errors.email?.type === 'pattern' && <span style={{ color: "#f25c05" }}>Provide a valid Email</span>}
+                            {errors?.email?.type === 'required' && <span style={{ color: "#f25c05" }}>Email is Required</span>}
+                            {errors?.email?.type === 'pattern' && <span style={{ color: "#f25c05" }}>Provide a valid Email</span>}
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -106,11 +110,12 @@ const Signup = () => {
                                         value: 6,
                                     }
                                 })}
-                                required
                             />
-                            {errors.password?.type === 'required' && <span style={{ color: "#f25c05" }}>Password is Required</span>}
-                            {errors.password?.type === 'minLength' && <span style={{ color: "#f25c05" }}>Must be 6 characters or longer</span>}
+                            {errors?.password?.type === 'required' && <span style={{ color: "#f25c05" }}>Password is Required</span>}
+                            {errors?.password?.type === 'minLength' && <span style={{ color: "#f25c05" }}>Must be 6 characters or longer</span>}
                         </Form.Group>
+
+                        {signInError}
 
                         <button className='primary-button-lg'>Sign Up</button>
                     </Form>

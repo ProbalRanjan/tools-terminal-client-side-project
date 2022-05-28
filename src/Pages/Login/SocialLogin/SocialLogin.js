@@ -7,6 +7,7 @@ import Loading from '../../Shared/Loading/Loading';
 import GoogleLogo from '../../../Assets/icons/google.png';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useToken from '../../../hooks/useToken/useToken';
 
 const SocialLogin = () => {
 
@@ -21,11 +22,13 @@ const SocialLogin = () => {
         error
     ] = useSignInWithGoogle(auth);
 
+    const [token] = useToken(user);
+
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    })
+    }, [token, navigate, from, user])
 
     if (loading) {
         return <Loading />

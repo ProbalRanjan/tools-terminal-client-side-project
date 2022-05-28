@@ -9,6 +9,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import SignInImg from '../../../Assets/images/Login/login-user.png';
 import './Login.css';
 import { Form } from 'react-bootstrap';
+import useToken from '../../../hooks/useToken/useToken';
 
 const Login = () => {
 
@@ -24,22 +25,26 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [token] = useToken(user);
+
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
+            toast.success("Login Success");
         }
-    })
+    }, [token, navigate, from, user])
 
     if (loading) {
         return <Loading />
     }
 
+    let signInError;
     if (error) {
-        return toast.error(error?.message)
+        signInError = <p style={{ color: "#F25C05" }}>{error?.message}</p>;
     }
 
     const onSubmit = data => {
-        signInWithEmailAndPassword(data.email, data.password)
+        signInWithEmailAndPassword(data.email, data.password);
     };
 
     return (
@@ -99,6 +104,7 @@ const Login = () => {
                             </button>
                         </Link>
 
+                        {signInError}
 
                         <button className='primary-button-lg'>Login</button>
                     </Form>

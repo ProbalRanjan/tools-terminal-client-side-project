@@ -13,6 +13,7 @@ const Header = () => {
 
     const handleSignOut = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
         navigate('/');
     }
 
@@ -42,7 +43,9 @@ const Header = () => {
                                 <Link to='/contact'>Contact</Link>
 
                                 {
-                                    user && <Link to='/' style={{ color: "#FFB700", fontWeight: "600" }}>{(user.displayName).split(" ")[0]}</Link>
+                                    user && <>
+                                        <Link to='/' style={{ color: "#FFB700", fontWeight: "600" }}>{(user?.displayName)}</Link>
+                                    </>
                                 }
 
                                 {
