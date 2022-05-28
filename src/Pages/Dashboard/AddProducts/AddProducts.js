@@ -22,7 +22,6 @@ const AddProducts = () => {
         })
             .then(res => res.json())
             .then(data => {
-
                 if (data.insertedId) {
                     reset();
                     toast.success("Thank you for adding product");
@@ -85,7 +84,7 @@ const AddProducts = () => {
                                 },
                                 maxLength: {
                                     value: 300,
-                                    message: 'Nor more 300 characters'
+                                    message: 'Not more 300 characters'
                                 }
                             })}
                         />
