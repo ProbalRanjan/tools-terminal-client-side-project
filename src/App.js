@@ -18,7 +18,7 @@ import PageNotFound from './Pages/Shared/PageNotFound/PageNotFound';
 import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
-import AllUsers from './Pages/Dashboard/AllUsers/AllUsers';
+import AllUsers from './Pages/Dashboard/AllUsers/AllUsers/AllUsers';
 import ManageOrders from './Pages/Dashboard/ManageOrders/ManageOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import AddProducts from './Pages/Dashboard/AddProducts/AddProducts';
