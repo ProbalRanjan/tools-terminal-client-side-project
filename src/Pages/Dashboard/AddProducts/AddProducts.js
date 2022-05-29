@@ -11,12 +11,12 @@ const AddProducts = () => {
 
     const onSubmit = data => {
 
-        const url = 'https://pacific-garden-52745.herokuapp.com/tools';
+        const url = 'http://localhost:5000/tools';
         fetch(url, {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(data),
         })

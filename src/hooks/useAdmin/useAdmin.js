@@ -9,11 +9,11 @@ const useAdmin = user => {
 
         if (email) {
 
-            fetch(`https://pacific-garden-52745.herokuapp.com/admin/${email}`, {
+            fetch(`http://localhost:5000/admin/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }
             })
                 .then(res => res.json())
@@ -24,7 +24,7 @@ const useAdmin = user => {
 
         }
 
-    }, [email])
+    }, [email, user])
 
     return [admin, adminLoading];
 }

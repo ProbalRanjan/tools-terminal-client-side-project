@@ -18,15 +18,15 @@ const Purchase = () => {
     });
 
     // Destructuring Product
-    const { _id, img, name, description, minOrder, quantity, price } = product;
+    const { img, name, description, minOrder, quantity, price } = product;
 
     // Load single inventory
     useEffect(() => {
-        const url = `https://pacific-garden-52745.herokuapp.com/purchase/${id}`
+        const url = `http://localhost:5000/purchase/${id}`
         fetch(url, {
             method: 'GET',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             }
         })
             .then(res => res.json())
@@ -43,7 +43,6 @@ const Purchase = () => {
             email: data.email,
             address: data.address,
             phoneNumber: data.phoneNumber,
-            _id,
             name,
             price,
             inputQuantity,
@@ -51,7 +50,7 @@ const Purchase = () => {
         }
         // console.log(order)
 
-        fetch('https://pacific-garden-52745.herokuapp.com/order', {
+        fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

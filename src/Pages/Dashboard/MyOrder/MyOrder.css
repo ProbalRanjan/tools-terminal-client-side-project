@@ -18,4 +18,9 @@
         padding: 40px 20px;
     }
 
+    .status-btn button {
+        display: block;
+        margin: 10px 0;
+    }
+
 }

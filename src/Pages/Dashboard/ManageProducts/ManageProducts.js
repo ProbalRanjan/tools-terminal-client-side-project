@@ -19,11 +19,11 @@ const ManageProducts = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {
-            const url = `https://pacific-garden-52745.herokuapp.com/tools/${id}`
+            const url = `http://localhost:5000/tools/${id}`
             fetch(url, {
                 method: 'DELETE',
                 headers: {
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 },
             })
                 .then(res => res.json())

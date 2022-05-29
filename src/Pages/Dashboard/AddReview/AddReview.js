@@ -13,12 +13,12 @@ const AddReview = () => {
 
     const onSubmit = data => {
 
-        const url = 'https://pacific-garden-52745.herokuapp.com/reviews';
+        const url = 'http://localhost:5000/reviews';
         fetch(url, {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(data),
         })

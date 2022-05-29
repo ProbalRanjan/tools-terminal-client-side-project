@@ -1,8 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import './MyOrder.css';
 
@@ -14,10 +16,10 @@ const MyOrder = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`https://pacific-garden-52745.herokuapp.com/order?email=${user.email}`, {
+            fetch(`http://localhost:5000/order?email=${user.email}`, {
                 method: 'GET',
                 headers: {
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }
             })
                 .then(res => {
@@ -45,10 +47,8 @@ const MyOrder = () => {
                             <th>No.</th>
                             <th>Name</th>
                             <th>Quantity</th>
-                            <th>Price</th>
                             <th>Total</th>
-                            <th>Pay</th>
-                            <th>Cancel</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,13 +61,19 @@ const MyOrder = () => {
                                     <td>{index + 1}</td>
                                     <td>{order.name}</td>
                                     <td>{order.inputQuantity}</td>
-                                    <td>${order.price}</td>
                                     <td>${order.totalPrice}</td>
-                                    <td>
-                                        <button className='primary-button'>Pay</button>
-                                    </td>
-                                    <td>
-                                        <button className='accent-button'>Cancel</button>
+                                    <td className='status-btn'>
+                                        {
+                                            !order.paid ? <>
+                                                <Link to={`/dashboard/payment/${order._id}`}>
+                                                    <button className='primary-button btn-sm'>Pay</button>
+                                                </Link>
+                                                <button className='accent-button ms-3 btn-sm'>
+                                                    <FontAwesomeIcon icon={faTrashCan} />
+                                                </button>
+                                            </> :
+                                                <p>Paid</p>
+                                        }
                                     </td>
                                 </tr>
                             )
