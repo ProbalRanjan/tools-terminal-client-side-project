@@ -56,12 +56,6 @@ const Dashboard = () => {
                                 {
                                     admin && <>
                                         <li>
-                                            <Link to='/dashboard/allUsers' className="nav-link align-middle px-0">
-                                                <FontAwesomeIcon icon={faGear} />
-                                                <span className="ms-2 d-none d-sm-inline">Manage Users</span>
-                                            </Link>
-                                        </li>
-                                        <li>
                                             <Link to='/dashboard/manageOrders' className="nav-link align-middle px-0">
                                                 <FontAwesomeIcon icon={faCartFlatbed} />
                                                 <span className="ms-2 d-none d-sm-inline">Manage Orders</span>
@@ -71,6 +65,12 @@ const Dashboard = () => {
                                             <Link to='/dashboard/addProducts' className="nav-link align-middle px-0">
                                                 <FontAwesomeIcon icon={faPlus} />
                                                 <span className="ms-2 d-none d-sm-inline">Add Products</span>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to='/dashboard/allUsers' className="nav-link align-middle px-0">
+                                                <FontAwesomeIcon icon={faGear} />
+                                                <span className="ms-2 d-none d-sm-inline">Manage Users</span>
                                             </Link>
                                         </li>
                                         <li>

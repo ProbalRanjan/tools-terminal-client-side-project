@@ -6,11 +6,11 @@ import './Review.css';
 
 const Review = ({ reviewOne }) => {
 
-    const { name, review, rating, image } = reviewOne;
+    const { name, review, rating, image, img } = reviewOne;
 
     return (
         <div className='review-details'>
-            <img src={image} alt="" />
+            <img src={image || img} alt="" />
             <div className='tool-info'>
                 <h5>{name}</h5>
                 <p title={review}>{review.slice(0, 35)}...</p>

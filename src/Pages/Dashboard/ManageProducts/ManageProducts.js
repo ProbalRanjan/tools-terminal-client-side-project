@@ -20,7 +20,7 @@ const ManageProducts = () => {
         }
     }, [tools])
 
-    const handleDelete = (id) => {
+    const handleUnpaidDelete = id => {
         const url = `http://localhost:5000/tools/${id}`
         fetch(url, {
             method: 'DELETE',
@@ -92,7 +92,7 @@ const ManageProducts = () => {
 
                                             <button onClick={handleClose} className='primary-button'>Close</button>
 
-                                            <button onClick={() => handleDelete(tool._id)} className='accent-button'>Confirm</button>
+                                            <button onClick={() => handleUnpaidDelete(tool._id)} className='accent-button'>Confirm</button>
 
                                         </Modal.Footer>
                                     </Modal>

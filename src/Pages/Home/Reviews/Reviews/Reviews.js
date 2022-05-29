@@ -13,7 +13,7 @@ const Reviews = () => {
         if (reviews.length > 0) {
             setLoading(false);
         }
-    })
+    }, [reviews]);
 
     if (loading) {
         return <Loading></Loading>

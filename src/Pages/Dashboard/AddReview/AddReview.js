@@ -2,11 +2,12 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
 const AddReview = () => {
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
 
     const defaultUserImg = "https://i.ibb.co/ykQWnbr/user-img.png";
@@ -24,8 +25,11 @@ const AddReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-
-                console.log(data)
+                if (data.acknowledged) {
+                    reset();
+                    toast.success("Tanks for the review");
+                }
+                // console.log(data)
             })
 
     }
