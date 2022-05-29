@@ -27,6 +27,7 @@ const SocialLogin = () => {
     useEffect(() => {
         if (token) {
             navigate(from, { replace: true });
+            toast.success("Login Successfully");
         }
     }, [token, navigate, from, user])
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
+import { Modal, Table } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import useTools from '../../../hooks/useTools/useTools';
 import Loading from '../../Shared/Loading/Loading';
@@ -10,30 +10,31 @@ const ManageProducts = () => {
     const [tools, setTools] = useTools();
     const [loading, setLoading] = useState(true);
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     useEffect(() => {
         if (tools.length > 0) {
             setLoading(false);
         }
-    })
+    }, [tools])
 
     const handleDelete = (id) => {
-        const proceed = window.confirm('Are you sure?')
-        if (proceed) {
-            const url = `http://localhost:5000/tools/${id}`
-            fetch(url, {
-                method: 'DELETE',
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-                },
+        const url = `http://localhost:5000/tools/${id}`
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
+            .then(res => res.json())
+            .then(() => {
+                const remaining = tools.filter(tool => tool._id !== id)
+                setTools(remaining);
+                toast.success("Product Deleted");
+                // console.log(data)
             })
-                .then(res => res.json())
-                .then(() => {
-                    const remaining = tools.filter(tool => tool._id !== id)
-                    setTools(remaining);
-                    toast.success("Product Deleted")
-                    // console.log(data)
-                })
-        }
     }
 
     if (loading) {
@@ -61,22 +62,46 @@ const ManageProducts = () => {
                         {
                             tools?.map((tool, index) =>
                                 <tr key={tool._id}>
-                                    <td>{index + 1}</td>
-                                    <td>
-                                        <img src={tool.img} alt="" className='w-50' />
-                                    </td>
-                                    <td>{tool.name}</td>
-                                    <td>{tool.quantity}</td>
-                                    <td>{tool.minOrder}</td>
-                                    <td>${tool.price}</td>
-                                    <td>
-                                        <button onClick={() => handleDelete(tool._id)} className='accent-button'>Delete</button>
-                                    </td>
+                                    <>
+                                        <td>{index + 1}</td>
+                                        <td>
+                                            <img src={tool.img} alt="" className='w-100' />
+                                        </td>
+                                        <td>{tool.name}</td>
+                                        <td>{tool.quantity}</td>
+                                        <td>{tool.minOrder}</td>
+                                        <td>${tool.price}</td>
+                                        <td>
+                                            <button onClick={handleShow} className='accent-button'>Delete</button>
+                                        </td>
+                                    </>
+
+                                    {/* Modal */}
+                                    <Modal
+                                        show={show}
+                                        onHide={handleClose}
+                                        backdrop="static"
+                                        keyboard={false}>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title className='fw-bold text-danger'>Are you sure want to delete?</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            Once you delete a product, it will not appear in website and delete forever.
+                                        </Modal.Body>
+                                        <Modal.Footer>
+
+                                            <button onClick={handleClose} className='primary-button'>Close</button>
+
+                                            <button onClick={() => handleDelete(tool._id)} className='accent-button'>Confirm</button>
+
+                                        </Modal.Footer>
+                                    </Modal>
                                 </tr>
                             )
                         }
                     </tbody>
                 </Table>
+
             </div>
         </div>
     );

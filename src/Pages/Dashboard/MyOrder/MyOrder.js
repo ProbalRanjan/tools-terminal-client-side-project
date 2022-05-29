@@ -43,7 +43,6 @@ const MyOrder = () => {
                 <Table responsive="sm">
                     <thead>
                         <tr>
-                            {/* <th>Image</th> */}
                             <th>No.</th>
                             <th>Name</th>
                             <th>Quantity</th>
@@ -55,9 +54,6 @@ const MyOrder = () => {
                         {
                             orders?.map((order, index) =>
                                 <tr key={order._id}>
-                                    {/* <td>
-                                            <img src={order.img} alt="" />
-                                        </td> */}
                                     <td>{index + 1}</td>
                                     <td>{order.name}</td>
                                     <td>{order.inputQuantity}</td>
@@ -72,7 +68,10 @@ const MyOrder = () => {
                                                     <FontAwesomeIcon icon={faTrashCan} />
                                                 </button>
                                             </> :
-                                                <p>Paid</p>
+                                                <div>
+                                                    <p>Paid</p>
+                                                    <p><span className='fw-bold'>TransactionId:</span> {order.transactionId}</p>
+                                                </div>
                                         }
                                     </td>
                                 </tr>
