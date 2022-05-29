@@ -42,7 +42,7 @@ const Payment = () => {
             </div>
             <div className='dashboard-form mb-4'>
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm />
+                    <CheckoutForm order={order} />
                 </Elements>
             </div>
         </div>

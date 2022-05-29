@@ -1,11 +1,34 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ order }) => {
 
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
+    const [success, setSuccess] = useState('');
+    const [transactionId, setTransactionId] = useState('');
+    const [clientSecret, setClientSecret] = useState('');
+
+    const { customerName, email, totalPrice } = order;
+
+    useEffect(() => {
+        const url = 'http://localhost:5000/create-payment-intent';
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({ totalPrice })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.clientSecret) {
+                    setClientSecret(data.clientSecret);
+                }
+            });
+    }, [totalPrice])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -19,12 +42,34 @@ const CheckoutForm = () => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
 
         setCardError(error?.message || '');
+        setSuccess('');
+
+        // Stripe.js API card payment
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: customerName,
+                        email: email,
+                    },
+                },
+            });
+
+        if (intentError) {
+            setCardError(intentError?.message);
+        }
+        else {
+            setCardError('');
+            setTransactionId(paymentIntent.id);
+            setSuccess("Congratulation! Your payment is success.");
+        }
 
     }
 
@@ -47,13 +92,19 @@ const CheckoutForm = () => {
                         },
                     }}
                 />
-                <button type="submit" className='primary-button-lg mt-4 mb-2' disabled={!stripe}>
+                <button type="submit" className='primary-button-lg mt-4 mb-2' disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>
 
             {
                 cardError && <p style={{ color: "#f25c05" }}>{cardError}</p>
+            }
+            {
+                success && <>
+                    <p style={{ color: "#00A83C" }}>{success}</p>
+                    <p className='fw-bold text-black'>Your Transaction ID: <span className='fw-normal'>{transactionId}</span></p>
+                </>
             }
 
         </>
