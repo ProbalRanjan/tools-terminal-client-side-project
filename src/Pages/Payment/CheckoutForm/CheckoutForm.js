@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import Loading from '../../Shared/Loading/Loading';
 
 const CheckoutForm = ({ order }) => {
 
@@ -89,10 +90,9 @@ const CheckoutForm = ({ order }) => {
                 .then(res => res.json())
                 .then(data => {
                     setLoading(false)
-                    console.log(data)
+                    // console.log(data)
                 })
         }
-
     }
 
     return (

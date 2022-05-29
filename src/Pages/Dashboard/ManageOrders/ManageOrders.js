@@ -37,6 +37,25 @@ const ManageOrders = () => {
             })
     );
 
+    // Deliver Paid Orders
+    const handleDeliver = id => {
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.upsertedCount) {
+                    toast.success("Delivered Successful!")
+                }
+                // console.log(data);
+            })
+    }
+
+    // Delete Unpaid Order
     const handleDelete = id => {
         const url = `http://localhost:5000/orders/${id}`
         fetch(url, {
@@ -97,9 +116,12 @@ const ManageOrders = () => {
                                                 order.paid ?
                                                     <>
                                                         {
-                                                            <button className='primary-button'>
-                                                                <FontAwesomeIcon icon={faTruck} />
-                                                            </button>
+                                                            order.delivered ?
+                                                                <p className='text-warning fw-bold'>Delivered</p>
+                                                                :
+                                                                <button onClick={() => handleDeliver(order._id)} className='primary-button'>
+                                                                    <FontAwesomeIcon icon={faTruck} />
+                                                                </button>
                                                         }
                                                     </>
                                                     :
