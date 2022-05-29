@@ -6,12 +6,12 @@ import './ManageOrders.css';
 
 const ManageOrders = () => {
 
-    const url = `http://localhost:5000/order`
+    const url = `http://localhost:5000/orders`
     const { data: orders, isLoading } = useQuery('order', () =>
         fetch(url, {
             method: 'GET',
             headers: {
-                // authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             }
         })
             .then(res => res.json())
