@@ -6,8 +6,9 @@ const Payment = () => {
     const { id } = useParams();
 
     return (
-        <div>
+        <div className='container'>
             <h1>Payment</h1>
+
         </div>
     );
 };

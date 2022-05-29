@@ -35,7 +35,7 @@ const MyOrder = () => {
     }, [navigate, user])
 
     return (
-        <div>
+        <div className='dashboard-table w-75'>
             <h2>My Total Order: {orders?.length}</h2>
             <div>
                 <Table responsive="sm">
@@ -46,8 +46,8 @@ const MyOrder = () => {
                             <th>Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
-                            <th>Total Price</th>
-                            <th>Pay Now</th>
+                            <th>Total</th>
+                            <th>Pay</th>
                             <th>Cancel</th>
                         </tr>
                     </thead>

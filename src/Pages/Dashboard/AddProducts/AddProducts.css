@@ -1,5 +1,36 @@
-.dashboard-title h2 {
+.dashboard-component {
+    padding: 60px 0;
+}
+
+.dashboard-component h2 {
     font-weight: 600;
     text-align: center;
     color: #FFB700;
+    padding-bottom: 10px;
+}
+
+.dashboard-form {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 40px;
+    padding: 60px;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+
+    .dashboard-component {
+        width: fit-content;
+        display: block;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .dashboard-form {
+        width: 100%;
+        border-radius: 20px;
+        padding: 20px;
+    }
+
 }

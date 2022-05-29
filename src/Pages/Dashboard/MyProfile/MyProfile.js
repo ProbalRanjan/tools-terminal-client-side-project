@@ -21,16 +21,16 @@ const MyProfile = () => {
     }
 
     return (
-        <div className='dashboard-title'>
+        <div className='dashboard-component'>
             <h2 className=''>My Profile</h2>
-            <div className='py-4 dashboard-profile'>
+            <div className='py-2 py-lg-4 dashboard-profile'>
                 <img src={user?.photoURL} alt="" />
                 <div>
-                    <h4 className='fw-bold'>{user?.displayName}</h4>
+                    <h4 className='fw-bold pt-3 pt-lg-0'>{user?.displayName}</h4>
                     <p className='mb-0'>{user?.email}</p>
                 </div>
             </div>
-            <div className='login-form my-4 w-75 d-block mx-auto'>
+            <div className='dashboard-form'>
 
                 <Form onSubmit={handleSubmit(onSubmit)}>
 

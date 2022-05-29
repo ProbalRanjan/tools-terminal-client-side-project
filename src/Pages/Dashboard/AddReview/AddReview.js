@@ -31,9 +31,9 @@ const AddReview = () => {
     }
 
     return (
-        <div className='dashboard-title'>
+        <div className='dashboard-component'>
             <h2>Add a Review</h2>
-            <div className='login-form my-4 w-75 d-block mx-auto'>
+            <div className='dashboard-form'>
 
                 <Form onSubmit={handleSubmit(onSubmit)}>
 

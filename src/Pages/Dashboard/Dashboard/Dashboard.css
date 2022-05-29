@@ -1,39 +1,12 @@
-.dashboard-container {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    gap: 50px;
+.dashboard-bg {
+    background-color: #ffe9b3;
 }
 
-.side-navbar {
-    background-color: antiquewhite;
-    padding: 60px 40px;
-    margin: -60px 0;
+.sidebar-link a {
+    color: #F25C05;
 }
 
-.sidebar-link>a {
-    text-decoration: none;
-    color: #101010;
+.sidebar-link span {
+    color: black;
     font-weight: 500;
-    padding-left: 30px;
-    margin-bottom: 40px;
-}
-
-.sidebar-link>a:hover {
-    background-color: #FFB700;
-    width: 100%;
-    border-radius: 10px;
-    transition: 0.2s;
-}
-
-@media only screen and (min-width: 0px) and (max-width: 576px) {
-
-    .dashboard-container {
-        gap: 30px;
-    }
-
-    .side-navbar {
-        padding: 40px 20px;
-        margin: -40px 0;
-    }
-
 }

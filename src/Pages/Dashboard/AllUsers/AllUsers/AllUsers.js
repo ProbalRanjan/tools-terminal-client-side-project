@@ -46,9 +46,8 @@ const AllUsers = () => {
     }
 
     return (
-        <div>
+        <div className='dashboard-table w-75'>
             <h2>All Users List</h2>
-
             <div>
                 <Table responsive="sm">
                     <thead>

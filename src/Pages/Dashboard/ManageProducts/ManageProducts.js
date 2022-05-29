@@ -41,9 +41,9 @@ const ManageProducts = () => {
     }
 
     return (
-        <div>
+        <div className='dashboard-table w-75'>
             <h2>Manage Products</h2>
-            <p>Number of Product: {tools.length}</p>
+            <p className='text-center fw-bold'>Number of Product: {tools.length}</p>
             <div>
                 <Table responsive="sm">
                     <thead>
