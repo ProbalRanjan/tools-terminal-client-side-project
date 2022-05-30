@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap';
 import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import './MyProfile.css';
@@ -17,7 +18,7 @@ const MyProfile = () => {
 
     // Get user info
     const email = user?.email;
-    const url = `http://localhost:5000/users/${email}`;
+    const url = `http://localhost:5000/user/${email}`;
     const { data, isLoading } = useQuery('user', () =>
         fetch(url, {
             method: 'GET',
@@ -39,12 +40,22 @@ const MyProfile = () => {
             phoneNumber: data.phoneNumber,
         }
 
-        const email = user.email;
         if (email) {
-
+            const url = `http://localhost:5000/user/${email}`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(updateUser),
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    toast.success('Update your profile successfully');
+                    reset();
+                })
         }
-
-        // console.log(updateUser);
     }
 
     if (loading || isLoading || updating) {

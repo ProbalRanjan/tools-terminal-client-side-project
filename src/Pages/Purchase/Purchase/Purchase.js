@@ -63,7 +63,6 @@ const Purchase = () => {
                 toast.success("Order placed successfully");
                 reset();
             })
-
     }
 
     if (loading) {
