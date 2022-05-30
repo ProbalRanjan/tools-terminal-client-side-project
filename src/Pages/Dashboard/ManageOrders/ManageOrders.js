@@ -108,7 +108,7 @@ const ManageOrders = () => {
                                                 order.paid ?
                                                     <p className='text-success fw-bold'>Paid</p>
                                                     :
-                                                    <p className='text-warning fw-bold'>Unpaid</p>
+                                                    <p className='text-danger fw-bold'>Unpaid</p>
                                             }
                                         </td>
                                         <td>

@@ -1,6 +1,6 @@
 .dashboard-component {
     padding: 60px 30px;
-    width: 100%;
+    width: 80%;
 }
 
 .dashboard-component h2 {
@@ -22,10 +22,9 @@
 @media only screen and (min-width: 0px) and (max-width: 576px) {
 
     .dashboard-component {
-        width: fit-content;
         display: block;
         margin: 0 auto;
-        padding: 40px 20px;
+        padding: 30px 10px;
     }
 
     .dashboard-form {

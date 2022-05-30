@@ -65,12 +65,12 @@ const MyProfile = () => {
     return (
         <div className='dashboard-component'>
             <h2 className=''>My Profile</h2>
-            <div className='py-2 py-lg-4 dashboard-profile'>
-                <img src={user?.photoURL || defaultUserImg} alt="" />
-                <div>
+            <div className='py-2 py-lg-3'>
+                <div className='dashboard-profile'>
+                    <img src={user?.photoURL || defaultUserImg} alt="" />
                     <h4 className='fw-bold pt-3 pt-lg-0'>{data?.name || user?.displayName}</h4>
-                    <p className='mb-0'>{user?.email}</p>
-                    <p className='mb-0 fw-bold'>{data?.role || "Customer"}</p>
+                    <p className='mb-0'><span className='fw-bold'>Email:</span> {user?.email}</p>
+                    <p className='mb-0 fw-bold' style={{ color: '#FFB700' }}>{data?.role || "Customer"}</p>
                 </div>
             </div>
 

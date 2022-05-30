@@ -4,11 +4,12 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../Loading/Loading'
 import './Header.css';
 
 const Header = () => {
 
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
 
     const handleSignOut = () => {
@@ -17,6 +18,9 @@ const Header = () => {
         navigate('/');
     }
 
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div>
@@ -43,7 +47,7 @@ const Header = () => {
 
                                 {
                                     user && <>
-                                        <Link to='/' style={{ color: "#FFB700", fontWeight: "600" }}>{(user?.displayName)}</Link>
+                                        <Link to='/dashboard' style={{ color: "#FFB700", fontWeight: "600" }}>{(user?.displayName)}</Link>
                                     </>
                                 }
 

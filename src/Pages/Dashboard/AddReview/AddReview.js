@@ -97,9 +97,14 @@ const AddReview = () => {
                             placeholder="Enter image URL"
                             defaultValue={defaultUserImg}
                             className='input-field'
-                            {...register("img")}
-                            readOnly
+                            {...register("img", {
+                                required: {
+                                    value: true,
+                                    message: 'Please set a image URL'
+                                }
+                            })}
                         />
+                        {errors?.img?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.img.message}</span>}
                     </Form.Group>
 
                     <button className='primary-button-lg'>Add a Review</button>

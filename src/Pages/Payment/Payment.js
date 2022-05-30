@@ -25,18 +25,18 @@ const Payment = () => {
             }
         })
             .then(res => res.json())
-    );
+    )
 
     if (isLoading) {
         return <Loading></Loading>
     }
 
     return (
-        <div className='dashboard-component'>
+        <div className='dashboard-component w-75'>
             <h2>Payment</h2>
             <div className='dashboard-form mb-4'>
                 <h4>Hello, {(user.displayName).split(" ")[0]}</h4>
-                <p><span className='fw-bold'>Your Product:</span> {order.name}</p>
+                <p><span className='fw-bold'>Your Product:</span> {(order.name)}</p>
                 <p><span className='fw-bold'>Quantity:</span> {order.inputQuantity}</p>
                 <p><span className='fw-bold'>Total Price:</span> {order.totalPrice}</p>
             </div>

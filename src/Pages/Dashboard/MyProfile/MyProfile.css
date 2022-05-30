@@ -1,25 +1,32 @@
 .dashboard-profile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 40px;
+    padding: 40px;
+    text-align: center;
 }
 
 .dashboard-profile img {
     width: 80px;
     border-radius: 500px;
     margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.dashboard-profile h4 {
+    font-size: 28px;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 576px) {
 
     .dashboard-profile {
-        display: block;
-        text-align: center;
+        width: 100%;
     }
 
-    .dashboard-profile img {
-        display: block;
-        margin: 0 auto;
+    .dashboard-profile h4 {
+        font-size: 24px;
     }
 
 }

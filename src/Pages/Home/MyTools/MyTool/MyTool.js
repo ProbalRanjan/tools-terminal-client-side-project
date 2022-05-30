@@ -16,11 +16,11 @@ const MyTool = ({ tool }) => {
             <img src={img} alt="" />
             <div className='tool-info'>
                 <h5 title={name}>{name.slice(0, 25)}...</h5>
-                <p>{description.slice(0, 60)}...</p>
+                <p title={description}>{description.slice(0, 40)}...</p>
                 <p><span>Minimum Order: </span>{minOrder}</p>
-                <p><span>Available: </span>{quantity}</p>
-                <p><span>Price: </span>${price}</p>
-                <button className='primary-button-lg' onClick={() => handleToolsId(_id)}>Order</button>
+                <p><span>Stock: </span>{quantity}</p>
+                <p><span>Price: </span>${price}/pc</p>
+                <button className='primary-button-lg' onClick={() => handleToolsId(_id)}>Place Order</button>
             </div>
         </div>
     );
