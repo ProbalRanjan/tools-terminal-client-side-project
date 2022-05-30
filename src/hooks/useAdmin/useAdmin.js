@@ -9,7 +9,7 @@ const useAdmin = user => {
 
         if (email) {
 
-            fetch(`http://localhost:5000/admin/${email}`, {
+            fetch(`https://pacific-garden-52745.herokuapp.com/admin/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

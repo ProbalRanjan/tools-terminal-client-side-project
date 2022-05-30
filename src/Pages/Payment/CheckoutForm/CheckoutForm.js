@@ -14,7 +14,7 @@ const CheckoutForm = ({ order }) => {
     const { _id, customerName, email, totalPrice } = order;
 
     useEffect(() => {
-        const url = 'http://localhost:5000/create-payment-intent';
+        const url = 'https://pacific-garden-52745.herokuapp.com/create-payment-intent';
         fetch(url, {
             method: 'POST',
             headers: {
@@ -78,7 +78,7 @@ const CheckoutForm = ({ order }) => {
                 transactionId: paymentIntent.id,
             }
 
-            fetch(`http://localhost:5000/order/${_id}`, {
+            fetch(`https://pacific-garden-52745.herokuapp.com/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

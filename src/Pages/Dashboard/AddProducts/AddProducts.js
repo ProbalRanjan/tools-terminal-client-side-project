@@ -11,7 +11,7 @@ const AddProducts = () => {
 
     const onSubmit = data => {
 
-        const url = 'http://localhost:5000/tools';
+        const url = 'https://pacific-garden-52745.herokuapp.com/tools';
         fetch(url, {
             method: 'POST',
             headers: {

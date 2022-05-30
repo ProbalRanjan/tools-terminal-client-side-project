@@ -19,7 +19,7 @@ const ManageOrders = () => {
     const handleShow = () => setShow(true);
 
     // Get all orders from multiple user
-    const url = `http://localhost:5000/orders`
+    const url = `https://pacific-garden-52745.herokuapp.com/orders`
     const { data: orders, isLoading } = useQuery('order', () =>
         fetch(url, {
             method: 'GET',
@@ -39,7 +39,7 @@ const ManageOrders = () => {
 
     // Deliver Paid Orders
     const handleDeliver = id => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://pacific-garden-52745.herokuapp.com/order/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -57,7 +57,7 @@ const ManageOrders = () => {
 
     // Delete Unpaid Order
     const handleDelete = id => {
-        const url = `http://localhost:5000/orders/${id}`
+        const url = `https://pacific-garden-52745.herokuapp.com/orders/${id}`
         fetch(url, {
             method: 'DELETE',
             headers: {

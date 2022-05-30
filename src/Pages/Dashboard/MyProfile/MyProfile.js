@@ -18,7 +18,7 @@ const MyProfile = () => {
 
     // Get user info
     const email = user?.email;
-    const url = `http://localhost:5000/user/${email}`;
+    const url = `https://pacific-garden-52745.herokuapp.com/user/${email}`;
     const { data, isLoading } = useQuery('user', () =>
         fetch(url, {
             method: 'GET',
@@ -41,7 +41,7 @@ const MyProfile = () => {
         }
 
         if (email) {
-            const url = `http://localhost:5000/user/${email}`;
+            const url = `https://pacific-garden-52745.herokuapp.com/user/${email}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {

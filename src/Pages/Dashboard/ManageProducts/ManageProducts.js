@@ -21,7 +21,7 @@ const ManageProducts = () => {
     }, [tools])
 
     const handleUnpaidDelete = id => {
-        const url = `http://localhost:5000/tools/${id}`
+        const url = `https://pacific-garden-52745.herokuapp.com/tools/${id}`
         fetch(url, {
             method: 'DELETE',
             headers: {

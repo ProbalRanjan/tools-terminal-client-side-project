@@ -22,7 +22,7 @@ const Purchase = () => {
 
     // Load single inventory
     useEffect(() => {
-        const url = `http://localhost:5000/purchase/${id}`
+        const url = `https://pacific-garden-52745.herokuapp.com/purchase/${id}`
         fetch(url, {
             method: 'GET',
             headers: {
@@ -50,7 +50,7 @@ const Purchase = () => {
         }
         // console.log(order)
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://pacific-garden-52745.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

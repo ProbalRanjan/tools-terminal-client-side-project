@@ -8,7 +8,7 @@ const UsersTable = ({ user, refetch, index }) => {
     // Handle to Create Admin 
     const makeAdmin = () => {
 
-        fetch(`http://localhost:5000/users/admin/${email}`, {
+        fetch(`https://pacific-garden-52745.herokuapp.com/users/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
