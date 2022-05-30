@@ -1,6 +1,6 @@
 # Tools Terminal Project
 
-Tools Terminal is the wonderful manufacturing company to manufacture different types of tools for using our daily life. [Please Visit Our Website](https://tools-manufacturer-project.web.app) to add your inventory on our warehouse.
+Tools Terminal is the wonderful manufacturing company to manufacture different types of tools for using our daily life. [Please Visit Our Website](https://tools-manufacturer-project.web.app) to purchase your tool.
 
 ## Our Website Link
 
