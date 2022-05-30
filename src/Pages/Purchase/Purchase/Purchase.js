@@ -13,7 +13,7 @@ const Purchase = () => {
     const [product, setProduct] = useState({});
     const { id } = useParams();
     const [user, loading] = useAuthState(auth);
-    const { register, handleSubmit, formState: { errors, isValid } } = useForm({
+    const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm({
         mode: "onChange"
     });
 
@@ -60,7 +60,8 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
-                toast.success("Order placed successfully")
+                toast.success("Order placed successfully");
+                reset();
             })
 
     }

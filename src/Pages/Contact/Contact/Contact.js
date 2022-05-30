@@ -1,14 +1,14 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import './Contact.css';
-import ContactIng from '../../../Assets/images/Login/contact-us.png'
+import ContactImg from '../../../Assets/images/Login/contact-us.png'
 
 const Contact = () => {
     return (
         <div className='container section-container'>
             <div className='grid-container'>
                 <div className='login-img'>
-                    <img src={ContactIng} alt="" />
+                    <img src={ContactImg} alt="" />
                 </div>
 
                 <div className='login-form'>

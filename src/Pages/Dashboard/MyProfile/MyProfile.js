@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import './MyProfile.css';
@@ -9,14 +10,44 @@ import './MyProfile.css';
 const MyProfile = () => {
 
     const [user, loading] = useAuthState(auth);
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const [updateProfile, updating] = useUpdateProfile(auth);
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const onSubmit = data => {
-        console.log(data)
+    const defaultUserImg = "https://i.ibb.co/ykQWnbr/user-img.png";
 
+    // Get user info
+    const email = user?.email;
+    const url = `http://localhost:5000/users/${email}`;
+    const { data, isLoading } = useQuery('user', () =>
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            }
+        })
+            .then(res => res.json())
+    );
+
+    // Update User Profile
+    const onSubmit = async data => {
+        await updateProfile({ displayName: data.name });
+
+        const updateUser = {
+            address: data.address,
+            education: data.education,
+            linkedinLink: data.linkedinLink,
+            phoneNumber: data.phoneNumber,
+        }
+
+        const email = user.email;
+        if (email) {
+
+        }
+
+        // console.log(updateUser);
     }
 
-    if (loading) {
+    if (loading || isLoading || updating) {
         return <Loading></Loading>
     }
 
@@ -24,79 +55,110 @@ const MyProfile = () => {
         <div className='dashboard-component'>
             <h2 className=''>My Profile</h2>
             <div className='py-2 py-lg-4 dashboard-profile'>
-                <img src={user?.photoURL} alt="" />
+                <img src={user?.photoURL || defaultUserImg} alt="" />
                 <div>
-                    <h4 className='fw-bold pt-3 pt-lg-0'>{user?.displayName}</h4>
+                    <h4 className='fw-bold pt-3 pt-lg-0'>{data?.name || user?.displayName}</h4>
                     <p className='mb-0'>{user?.email}</p>
+                    <p className='mb-0 fw-bold'>{data?.role || "Customer"}</p>
                 </div>
             </div>
-            <div className='dashboard-form'>
 
+            {/* Update Profile form */}
+            <div className='dashboard-form'>
                 <Form onSubmit={handleSubmit(onSubmit)}>
 
                     <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Full Name</Form.Label>
                         <Form.Control
                             type="text"
                             className='input-field'
-                            value={user?.displayName}
+                            defaultValue={user?.displayName}
                             {...register("name")}
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
+                            type="email"
+                            className='input-field'
+                            value={user?.email}
+                            {...register("email")}
                             readOnly
                         />
                     </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicReview">
-                        <Form.Label>Review</Form.Label>
-                        <Form.Control as="textarea" rows={3}
+                    <Form.Group className="mb-3" controlId="formBasicAddress">
+                        <Form.Label>Address</Form.Label>
+                        <Form.Control
                             type="text"
-                            placeholder="Add review...."
+                            placeholder="Your Address"
                             className='input-field'
-                            {...register("review", {
+                            {...register("address", {
                                 required: {
                                     value: true,
-                                    message: 'Write minimum 10 characters'
+                                    message: "Address is required"
+                                },
+                            })}
+                        />
+                        {errors.address?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.address.message}</span>}
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEducation">
+                        <Form.Label>Education</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Your Address"
+                            className='input-field'
+                            {...register("education", {
+                                required: {
+                                    value: true,
+                                    message: "Education is required"
+                                },
+                            })}
+                        />
+                        {errors.education?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.education.message}</span>}
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPhone">
+                        <Form.Label>Phone Number</Form.Label>
+                        <Form.Control
+                            type="number"
+                            placeholder="+88 012345678"
+                            className='input-field'
+                            {...register("phoneNumber", {
+                                required: {
+                                    value: true,
+                                    message: "Phone Number is required"
+                                },
+                                minLength: {
+                                    value: 11,
+                                    message: "Please put 11 digit phone number"
+                                },
+                                maxLength: {
+                                    value: 11,
+                                    message: "Please input a valid phone number"
                                 }
                             })}
                         />
-                        {errors?.review?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.review.message}</span>}
+                        {errors.phoneNumber?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.phoneNumber.message}</span>}
+                        {errors.phoneNumber?.type === 'minLength' && <span style={{ color: "#f25c05" }}>{errors.phoneNumber.message}</span>}
+                        {errors.phoneNumber?.type === 'maxLength' && <span style={{ color: "#f25c05" }}>{errors.phoneNumber.message}</span>}
                     </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicRating">
-                        <Form.Label>Rating</Form.Label>
-                        <Form.Control
-                            type="number"
-                            defaultValue={0}
-                            className='input-field'
-                            {...register("rating", {
-                                min: {
-                                    value: 1,
-                                    message: "Please add rating more than 0"
-                                },
-                                max: {
-                                    value: 5,
-                                    message: "Can't rating more than 5"
-                                },
-                                valueAsNumber: true,
-                            })}
-                        />
-                        {errors?.rating?.type === 'min' && <span style={{ color: "#f25c05" }}>{errors.rating.message}</span>}
-                        {errors?.rating?.type === 'max' && <span style={{ color: "#f25c05" }}>{errors.rating.message}</span>}
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicUserImage">
-                        <Form.Label>Your Image</Form.Label>
+                    <Form.Group className="mb-3" controlId="formBasicLinkedIn">
+                        <Form.Label>LinkedIn Profile Link</Form.Label>
                         <Form.Control
                             type="text"
-                            placeholder="Enter image URL"
+                            placeholder="Profile URL"
                             className='input-field'
-                            {...register("img")}
-                            readOnly
+                            {...register("linkedinLink", {
+                                required: {
+                                    value: true,
+                                    message: "LinkedIn link is required"
+                                },
+                            })}
                         />
+                        {errors.linkedinLink?.type === 'required' && <span style={{ color: "#f25c05" }}>{errors.linkedinLink.message}</span>}
                     </Form.Group>
 
                     <button className='primary-button-lg'>Update</button>
                 </Form>
-
             </div>
         </div>
     );
